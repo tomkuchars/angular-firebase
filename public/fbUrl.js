@@ -1,4 +1,3 @@
-
 var config = {
     apiKey: "AIzaSyAGYPSL78ZVJ-ymcOU02ulhlsGutHirk9Q",
     authDomain: "fir-test-a7f69.firebaseapp.com",
@@ -6,6 +5,5 @@ var config = {
     storageBucket: "fir-test-a7f69.appspot.com",
     messagingSenderId: "352609761026"
 };
-firebase.initializeApp(config);
 
-angular.module('app').service('rootRef', firebase.database().ref());
+firebase.initializeApp(config);
