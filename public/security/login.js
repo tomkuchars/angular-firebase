@@ -1,6 +1,6 @@
 angular.module('app').component('login', {
     templateUrl: '/security/login.html',
-    controller: function ($scope, $location) {
+    controller: function ($scope, $location, auth) {
         auth.onAuthStateChanged(function (user) {
             if (user) {
                 // User is signed in.

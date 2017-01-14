@@ -7,5 +7,3 @@ var config = {
 };
 
 firebase.initializeApp(config);
-
-var ref = firebase.database().ref();
