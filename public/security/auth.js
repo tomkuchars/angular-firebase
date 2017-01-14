@@ -1,0 +1,1 @@
+var auth = firebase.auth();

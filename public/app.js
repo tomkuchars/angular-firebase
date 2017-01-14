@@ -5,6 +5,8 @@ app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/home', {
             template: '<home></home>'
+        }).when('/login', {
+            template: '<login></login>'
         })
         .otherwise('/home')
 });
