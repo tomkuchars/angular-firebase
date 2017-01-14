@@ -1,3 +1,3 @@
-app.service('auth', function () {
+app.factory('auth', function () {
     return firebase.auth();
 });
