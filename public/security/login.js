@@ -1,7 +1,7 @@
 angular.module('app').component('login', {
     templateUrl: '/security/login.html',
     controller: function ($scope, $location, auth) {
-        auth.onAuthStateChanged(function (user) {
+        auth().onAuthStateChanged(function (user) {
             if (user) {
                 // User is signed in.
                 // var isAnonymous = user.isAnonymous;
@@ -12,11 +12,24 @@ angular.module('app').component('login', {
             }
         });
 
+        var self = this;
+
         this.anonLogin = function () {
-            auth.signInAnonymously()
-                .catch((function (err) {
-                    this.errorMessage = err.code;
-                }).bind(this));
+            auth().signInAnonymously()
+                .catch(function (err) {
+                    $scope.$apply(function () {
+                        self.errorMessage = err.code;
+                    });
+                });
+        };
+
+        this.fbLogin = function () {
+            auth().signInWithPopup(new auth.FacebookAuthProvider())
+                .catch(function (err) {
+                    $scope.$apply(function () {
+                        self.errorMessage = err.code;
+                    });
+                });
         };
     }
 });
