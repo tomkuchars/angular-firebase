@@ -12,24 +12,20 @@ angular.module('app').component('login', {
             }
         });
 
-        var self = this;
+        var applyError = function (err) {
+            $scope.$apply(function () {
+                this.errorMessage = err.code;
+            }.bind(this));
+        }.bind(this);
 
         this.anonLogin = function () {
             auth().signInAnonymously()
-                .catch(function (err) {
-                    $scope.$apply(function () {
-                        self.errorMessage = err.code;
-                    });
-                });
+                .catch(applyError);
         };
 
         this.fbLogin = function () {
             auth().signInWithPopup(new auth.FacebookAuthProvider())
-                .catch(function (err) {
-                    $scope.$apply(function () {
-                        self.errorMessage = err.code;
-                    });
-                });
+                .catch(applyError);
         };
     }
 });
